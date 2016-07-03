@@ -2,17 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>a11y-nope</title>
+  <title>a11y-yep</title>
 </head>
 <body>
-  <div>
-    <input id="username" placeholder="Enter Username">
-    <button id="submit">Submit</button>
+  <form action="user/login" id="login-form">
+    <label for="username">Username</label>
+    <input type="text" name="username" id="username" placeholder="Enter Username">
+    <button type="submit">Submit</button>
     <script>
-      document.getElementById("submit").addEventListener('click',function(e){
-        console.log(["username",document.getElementById("username").value]);
+      document.getElementById("login-form").addEventListener('submit',function(e){
+        e.preventDefault();
+        try {
+          var formData = new FormData(e.target);
+          console.log(formData.values());
+          for(var keyvalue of formData.entries()) {
+             console.log(keyvalue);
+          }
+        } catch(e) {
+          console.log('your browser does not support FormData()');
+        }
       });
     </script>
-  </div>
+  </form>
 </body>
 </html>
