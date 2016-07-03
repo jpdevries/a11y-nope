@@ -9,7 +9,9 @@
     <input id="username" placeholder="Enter Username">
     <button id="submit">Submit</button>
     <script>
-      document.getElementById("submit").addEventListener('click',function(e){});
+      document.getElementById("submit").addEventListener('click',function(e){
+        console.log(["username",document.getElementById("username").value]);
+      });
     </script>
   </div>
 </body>
